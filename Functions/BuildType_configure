@@ -34,6 +34,10 @@ configure_do_configuration() {
 }
 
 configure_do_build() {
+   if Array_Contains config "--disable-static"; then
+      export LIBTOOLFLAGS="--tag=disable-static"
+      Log_Debug "Recognized configure option --disable-static, setting LIBTOOLFLAGS=--tag=disable-static"
+   fi
    makefile_do_build
 }
 
